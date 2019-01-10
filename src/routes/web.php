@@ -12,5 +12,16 @@
 */
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+    #return $app->version();
+    return 'Hello';
+});
+
+$app->get('hello[/{name}]', function ($name = null) {
+    return 'Hello ' . $name;
+});
+
+
+$app->post('/', function (Illuminate\Http\Request $request) {
+	$slug = $request->input('slug');
+	return $slug;
 });
